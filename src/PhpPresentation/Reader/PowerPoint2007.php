@@ -1053,20 +1053,20 @@ class PowerPoint2007 implements ReaderInterface
         $oElement = $document->getElement('p:xfrm/a:off', $node);
         if ($oElement instanceof DOMElement) {
             if ($oElement->hasAttribute('x')) {
-                $oShape->setOffsetX(CommonDrawing::emuToPixels((int) $oElement->getAttribute('x')));
+                $oShape->setOffsetX((int) CommonDrawing::emuToPixels((int) $oElement->getAttribute('x')));
             }
             if ($oElement->hasAttribute('y')) {
-                $oShape->setOffsetY(CommonDrawing::emuToPixels((int) $oElement->getAttribute('y')));
+                $oShape->setOffsetY((int) CommonDrawing::emuToPixels((int) $oElement->getAttribute('y')));
             }
         }
 
         $oElement = $document->getElement('p:xfrm/a:ext', $node);
         if ($oElement instanceof DOMElement) {
             if ($oElement->hasAttribute('cx')) {
-                $oShape->setWidth(CommonDrawing::emuToPixels((int) $oElement->getAttribute('cx')));
+                $oShape->setWidth((int) CommonDrawing::emuToPixels((int) $oElement->getAttribute('cx')));
             }
             if ($oElement->hasAttribute('cy')) {
-                $oShape->setHeight(CommonDrawing::emuToPixels((int) $oElement->getAttribute('cy')));
+                $oShape->setHeight((int) CommonDrawing::emuToPixels((int) $oElement->getAttribute('cy')));
             }
         }
 
@@ -1075,7 +1075,7 @@ class PowerPoint2007 implements ReaderInterface
         $oShape->createRow();
         foreach ($arrayElements as $key => $oElement) {
             if ($oElement instanceof DOMElement && $oElement->getAttribute('w')) {
-                $oShape->getRow(0)->getCell($key)->setWidth(CommonDrawing::emuToPixels((int) $oElement->getAttribute('w')));
+                $oShape->getRow(0)->getCell($key)->setWidth((int) CommonDrawing::emuToPixels((int) $oElement->getAttribute('w')));
             }
         }
 
@@ -1090,7 +1090,7 @@ class PowerPoint2007 implements ReaderInterface
                 $oRow = $oShape->createRow();
             }
             if ($oElementRow->hasAttribute('h')) {
-                $oRow->setHeight(CommonDrawing::emuToPixels((int) $oElementRow->getAttribute('h')));
+                $oRow->setHeight((int) CommonDrawing::emuToPixels((int) $oElementRow->getAttribute('h')));
             }
             $arrayElementsCell = $document->getElements('a:tc', $oElementRow);
             foreach ($arrayElementsCell as $keyCell => $oElementCell) {
